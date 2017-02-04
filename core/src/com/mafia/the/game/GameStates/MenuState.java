@@ -17,7 +17,7 @@ public class MenuState extends State {
     //background and button variables.
     private Texture background;
     private Texture playButton;
-    private Texture logo;
+    private Texture title;
     private Texture testImage;
     private Music introMusic;
     private SpriteBatch batch;
@@ -25,9 +25,9 @@ public class MenuState extends State {
 
     public MenuState(GameStateManager gsm) {
         super(gsm);
-//        background = new Texture("bg.png");
-//        playButton = new Texture("playbtn.png");
-//        logo = new Texture("main.jpg");
+        background = new Texture("images/initialbackground.png");
+        playButton = new Texture("images/playbutton.png");
+        title = new Texture("images/logo.png");
         cam.setToOrtho(false, MafiaGame.WIDTH,MafiaGame.HEIGHT);
         playingState=false;
         testImage = new Texture(Gdx.files.internal("sprites/smurf.png"));
@@ -67,11 +67,10 @@ public class MenuState extends State {
         sb.setProjectionMatrix(cam.combined);
         //sb is like a container. It needs to open up first and then put the required stuff in there and close it.
         sb.begin(); //open container.
-//        sb.draw(background,0,0, MafiaGame.WIDTH,MafiaGame.HEIGHT); //@param (img, x,y,width,height)
-//        sb.draw(logo,cam.position.x - logo.getWidth()/2,cam.position.y/2-200);
-        //Game width/2 - buttonwidth/2 is the starting point of the button drawing.
+        sb.draw(background,0,0, MafiaGame.WIDTH,MafiaGame.HEIGHT); //@param (img, x,y,width,height)
+        sb.draw(title,cam.position.x - title.getWidth()/2,cam.position.y+50);
         //This makes the button display in the center.
-//        sb.draw(playButton,(cam.position.x-playButton.getWidth()/2), cam.position.y);
+        sb.draw(playButton,cam.position.x+ playButton.getWidth()/7, cam.position.y-100);
         sb.end();
     }
 

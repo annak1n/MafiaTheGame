@@ -40,6 +40,7 @@ public class PlayState extends State {
 
     @Override
     public void render(SpriteBatch sb) {
+//        System.out.print(sb);
         batch.setProjectionMatrix(cam.combined); //spritebatch should use coordinate system specified by the cam.
         batch.begin();
         batch.draw(testImage, mafia.x, mafia.y);
