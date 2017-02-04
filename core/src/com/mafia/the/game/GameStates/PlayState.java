@@ -1,9 +1,12 @@
 package com.mafia.the.game.GameStates;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 
 /**
  * Created by tb on 2/3/17.
@@ -13,10 +16,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class PlayState extends State {
 
     private OrthographicCamera textCam;
-    private Texture bg;
+    private Texture testImage;
     private float lastBirdPositionX;
+    private SpriteBatch batch;
     private BitmapFont text;
     private BitmapFont highestScoreText;
+    private Rectangle mafia;
 
     protected PlayState(GameStateManager gsm) {
         super(gsm);
@@ -30,15 +35,20 @@ public class PlayState extends State {
     @Override
     public void update(float dt) {
 
-        cam.update();
+        cam.update();//it's ideal to update camera per each frame.
     }
 
     @Override
     public void render(SpriteBatch sb) {
-        sb.setProjectionMatrix(cam.combined);
-        sb.begin();
-        sb.draw(bg,cam.position.x - cam.viewportWidth/2,0);
-        sb.end();
+        batch.setProjectionMatrix(cam.combined); //spritebatch should use coordinate system specified by the cam.
+        batch.begin();
+        batch.draw(testImage, mafia.x, mafia.y);
+        batch.end();
+
+        //For keyboard.. Add buttons for android later.
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) mafia.x -= 200 * Gdx.graphics.getDeltaTime();
+        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) mafia.x += 200 * Gdx.graphics.getDeltaTime();
+
     }
 
     @Override
@@ -46,7 +56,7 @@ public class PlayState extends State {
     }
 
     public void repositionCam(int x){
-        bg.dispose();
+        testImage.dispose();
         text.dispose();
     }
 }
