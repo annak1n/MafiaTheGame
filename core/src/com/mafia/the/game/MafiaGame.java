@@ -28,7 +28,9 @@ public class MafiaGame extends ApplicationAdapter {
 
 	@Override
 	public void create () {
+		gsm = new GameStateManager();
 		gsm.push(new MenuState(gsm)); //transition into menustate.
+		batch = new SpriteBatch();
 	}
 
 	@Override
