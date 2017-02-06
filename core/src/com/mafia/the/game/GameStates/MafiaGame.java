@@ -1,11 +1,9 @@
-package com.mafia.the.game;
+package com.mafia.the.game.GameStates;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mafia.the.game.GameStates.GameStateManager;
-import com.mafia.the.game.GameStates.MenuState;
 
 /**
  * author:tb

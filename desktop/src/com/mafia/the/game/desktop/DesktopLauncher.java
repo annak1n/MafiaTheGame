@@ -2,7 +2,7 @@ package com.mafia.the.game.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.mafia.the.game.MafiaGame;
+import com.mafia.the.game.GameStates.MafiaGame;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {

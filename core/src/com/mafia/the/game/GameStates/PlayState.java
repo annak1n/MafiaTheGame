@@ -15,6 +15,7 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class PlayState extends State {
 
+    private Boolean isDay; //set game as day or night.
     private OrthographicCamera textCam;
     private Texture testImage;
     private float lastBirdPositionX;
@@ -25,6 +26,7 @@ public class PlayState extends State {
 
     protected PlayState(GameStateManager gsm) {
         super(gsm);
+        isDay = true;
     }
 
     @Override
@@ -34,8 +36,13 @@ public class PlayState extends State {
 
     @Override
     public void update(float dt) {
-
         cam.update();//it's ideal to update camera per each frame.
+
+        //change day and night based on the time collapsed.. say 2-5 mins.
+
+        //during the day, Mafia can't be active.
+
+        //at night, Mafia is active and allow them to attack civilians.
     }
 
     @Override

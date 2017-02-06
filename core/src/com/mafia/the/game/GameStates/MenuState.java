@@ -7,10 +7,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
-import com.mafia.the.game.MafiaGame;
 
 /**
  * Created by tb on 2/3/17.
+ * On the menu screen, display characters to user and allow them to pick a character.
  */
 
 public class MenuState extends State {
@@ -27,6 +27,7 @@ public class MenuState extends State {
         super(gsm);
         background = new Texture("images/initialbackground.png");
         playButton = new Texture("images/playbutton.png");
+//        instrButton = new Texture("images/instructionsbutton.png");
         title = new Texture("images/logo.png");
         cam.setToOrtho(false, MafiaGame.WIDTH,MafiaGame.HEIGHT);
         playingState=false;
@@ -49,11 +50,13 @@ public class MenuState extends State {
     @Override
     public void handleInput() {
         //if screen touched or enter key pressed, start the game.
-        if(Gdx.input.justTouched() || Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
+        if(Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
             gsm.set(new PlayState(gsm)); //transition into Playstate.
             playingState=true;
             //NO DISPOSING HERE BECAUSE WE WILL MOST LIKELY BE REUSING THIS STATE.
         }
+        //if texture for specific character was pressed, then set the user's character as that character here.
+        //and create other characters here.
 
     }
 

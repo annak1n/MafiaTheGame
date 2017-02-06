@@ -18,7 +18,7 @@ public class AndroidLauncher extends AndroidApplication {
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		initialize(new MafiaGame(), config);
+		initialize(new com.mafia.the.game.GameStates.MafiaGame(), config);
 		config.useAccelerometer = false;
 		config.useCompass=false;
 	}
