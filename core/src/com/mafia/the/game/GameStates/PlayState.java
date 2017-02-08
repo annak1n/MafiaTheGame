@@ -1,7 +1,6 @@
 package com.mafia.the.game.GameStates;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -18,22 +17,22 @@ public class PlayState extends State {
     private Boolean isDay; //set game as day or night.
     private OrthographicCamera textCam;
     private Texture testImage;
-    private float lastBirdPositionX;
-    private SpriteBatch batch;
     private BitmapFont text;
-    private BitmapFont highestScoreText;
     private Rectangle mafia;
 
     protected PlayState(GameStateManager gsm) {
         super(gsm);
+        textCam = new OrthographicCamera(); //cam for text
         isDay = true;
+        testImage = new Texture(Gdx.files.internal("sprites/smurf.png"));
+        mafia = new Rectangle();
+        mafia.set(0, 0, testImage.getWidth() / 4, testImage.getHeight() / 4); //divide by 4 because the sprite sheet is 4 x 4.
     }
 
     @Override
     protected void handleInput() {
 
     }
-
     @Override
     public void update(float dt) {
         cam.update();//it's ideal to update camera per each frame.
@@ -48,23 +47,19 @@ public class PlayState extends State {
     @Override
     public void render(SpriteBatch sb) {
 //        System.out.print(sb);
-        batch.setProjectionMatrix(cam.combined); //spritebatch should use coordinate system specified by the cam.
-        batch.begin();
-        batch.draw(testImage, mafia.x, mafia.y);
-        batch.end();
-
-        //For keyboard.. Add buttons for android later.
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) mafia.x -= 200 * Gdx.graphics.getDeltaTime();
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) mafia.x += 200 * Gdx.graphics.getDeltaTime();
-
+        Gdx.gl.glClearColor(0, 0, 1, 1); //clear screen
+        sb.setProjectionMatrix(cam.combined); //spritebatch should use coordinate system specified by the cam.
+        sb.begin();
+        sb.draw(testImage, mafia.x, mafia.y);
+        sb.end();
     }
 
     @Override
     public void dispose() {
+        testImage.dispose();
+        text.dispose();
     }
 
     public void repositionCam(int x){
-        testImage.dispose();
-        text.dispose();
     }
 }

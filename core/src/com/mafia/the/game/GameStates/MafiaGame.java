@@ -23,6 +23,7 @@ public class MafiaGame extends ApplicationAdapter {
 		gsm = new GameStateManager();
 		batch = new SpriteBatch();
 		Gdx.gl.glClearColor(0, 0, 1, 1); //clear screen
+		//gsm push and set difference is that set pops the top element from stack and push new state.
 		gsm.push(new MenuState(gsm)); //transition into menustate.
 	}
 
