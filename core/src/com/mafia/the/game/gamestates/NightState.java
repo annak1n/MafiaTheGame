@@ -24,6 +24,19 @@ public class NightState extends State {
     @Override
     public void update(float v) {
 
+        /*
+        The only thing that game allows during the day state is mafia's killing one civilian.
+        during a time frame, 2-3mins, let mafias decide on who to kill.
+        when decision is made, kill the civilian.
+         */
+
+        //FIRST, CHECK NUMBER OF MAFIA AND CIVILIANS, IF ANY OF THEM IS 0, QUIT GAME.
+
+        //LET THE MAFIA DECIDE WHO TO KILL.
+
+        //KILL CIVILIAN.
+
+        //MOVE TO DAY STATE.
     }
 
     @Override
@@ -55,6 +68,6 @@ public class NightState extends State {
      * @param victim a civilian object, which mafia is going to kill
      */
     public void killCivilian(Civilian victim){
-        victim.setDead();
+        victim.setAliveOrDead(false); //civilian just got killed.
     }
 }

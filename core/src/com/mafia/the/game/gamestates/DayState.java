@@ -21,7 +21,17 @@ public class DayState extends State {
 
     @Override
     public void update(float dt) {
+        //CHECK NUMBER OF MAFIA AND CIVILIANS. IF ANY OF THEM IS 0, QUIT GAME.
 
+        //DISPLAY WHO DIED THE NIGHT BEFORE TO EVERYONE.
+
+        //LET EVERYONE DISCUSS AND DECIDE WHO THEY THINK MAFIA IS.
+
+        //KILL THE CHOSEN PERSON.
+
+        //IF THE CHOSEN PERSON IS MAFIA, GOOD! IF NOT, THE CHOSEN PERSON DIES HOWEVER.
+
+        //DELETE DAY STATE AND MOVE BACK TO NIGHTSTATE.
     }
 
     @Override

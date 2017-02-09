@@ -7,36 +7,13 @@ package com.mafia.the.game.player;
  * For now, user should not be allowed to be a host. Perhaps later in the future.
  */
 
-public class Host extends Player {
+public class Host {
 
     public Host() {
-        super();
+
     }
 
     public Host(String name, Boolean isAlive, Boolean isMafia) {
-        super(name, isAlive, isMafia);
-    }
 
-    @Override
-    public void setName(String name) {
-        super.setName(name);
-    }
-
-    @Override
-    public String getName() {
-        return super.getName();
-    }
-
-    @Override
-    /**
-     * host should be alive until the game ends.
-     */
-    public Boolean isAlive() {
-        return true;
-    }
-
-    @Override
-    public Boolean mafiaFlag() {
-        return false;
     }
 }

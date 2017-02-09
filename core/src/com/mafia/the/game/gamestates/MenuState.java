@@ -1,7 +1,6 @@
 package com.mafia.the.game.gamestates;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -29,11 +28,10 @@ public class MenuState extends State {
 
     public MenuState(GameStateManager gsm) {
         super(gsm);
-        background = new Texture("images/initialbackground.png");
+        background = new Texture("background/characters1.jpg");
         playButton = new Texture("images/playbutton.png");
 //        instrButton = new Texture("images/instructionsbutton.png");
         title = new Texture("images/logo.png");
-        cam.setToOrtho(false, MafiaGame.WIDTH, MafiaGame.HEIGHT);
         playingState = false;
 
         //use newSound for music less than 10sec, newMusic for audio longer than 10sec.
@@ -53,7 +51,7 @@ public class MenuState extends State {
     @Override
     public void handleInput () {
         //For now, enter key will cause transition into playstate.
-        if (Gdx.input.justTouched()||Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
+        if (Gdx.input.justTouched()) {
             gsm.set(new PlayState(gsm)); //transition into Playstate.
             playingState = true;
             introMusic.stop();
@@ -61,6 +59,8 @@ public class MenuState extends State {
         }
         //if texture for specific character was pressed, then set the user's character as that character here. Initialize the array accordingly.
         //and create other characters here.
+
+        //ALLOW DUPLICATE CHARACTERS, BUT EACH USER SHOULD HAVE UNIQUE NAME.
     }
 
     @Override
@@ -86,11 +86,5 @@ public class MenuState extends State {
         background.dispose();
         playButton.dispose();
         introMusic.dispose();
-    }
-    public static ArrayList<Civilian> getCivilians(){
-        return civilians;
-    }
-    public static ArrayList<Mafia> getMafia(){
-        return mafiaArray;
     }
 }

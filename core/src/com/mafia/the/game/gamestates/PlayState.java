@@ -40,6 +40,7 @@ public class PlayState extends State {
         if(input.isKeyPressed(Input.Keys.ENTER)){
             gsm.set(new MenuState(gsm));
         }
+
     }
     @Override
     public void update(float dt) {
@@ -48,9 +49,16 @@ public class PlayState extends State {
 
         //each character should introduce themselves. When the introduction of each character is finished, enter Night first.
 
+        /*
+        NIGHT STATE ... gsm.push(new NightState());  //push because we want day and night states on top of playstate.
+         */
+
         //change day and night based on the time collapsed.. say 2-5 mins.
 
         //during the day, Mafia can't be active.
+        /*
+        DAY STATE //Day state should be set from night state.
+         */
 
         //at night, Mafia is active and allow them to attack civilians.
 
