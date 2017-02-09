@@ -1,4 +1,4 @@
-package com.mafia.the.game.GameStates;
+package com.mafia.the.game.gamestates;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 

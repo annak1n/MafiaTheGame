@@ -1,5 +1,7 @@
-package com.mafia.the.game.Players;
+package com.mafia.the.game.player;
 
+
+import java.util.ArrayList;
 
 /**
  * Created by tb on 2/6/17.
@@ -30,6 +32,12 @@ public class Mafia extends Player {
     public Boolean mafiaFlag() {
         return true;
     }
+
+    @Override
+    public <T> int howManyAlive(ArrayList<T> list) {
+        return list.size();
+    }
+
     /**
      * at night, killCivilian will be called at least once, and per method call,
      * one civilian of choosing will die.

@@ -1,4 +1,6 @@
-package com.mafia.the.game.Players;
+package com.mafia.the.game.player;
+
+import java.util.ArrayList;
 
 /**
  * Created by tb on 2/6/17.
@@ -42,4 +44,5 @@ public abstract class Player {
 
     public abstract Boolean isAlive();
     public abstract Boolean mafiaFlag();
+    public abstract <T> int howManyAlive(ArrayList<T> list); //list of mafia or civilian should be the input.
 }

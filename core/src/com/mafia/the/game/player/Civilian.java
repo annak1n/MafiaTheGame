@@ -1,5 +1,7 @@
-package com.mafia.the.game.Players;
+package com.mafia.the.game.player;
 
+
+import java.util.ArrayList;
 
 /**
  * Created by tb on 2/6/17.
@@ -34,5 +36,10 @@ public class Civilian extends Player {
     @Override
     public Boolean mafiaFlag() {
         return _isMafia;
+    }
+
+    @Override
+    public <T> int howManyAlive(ArrayList<T> list) {
+        return list.size();
     }
 }
