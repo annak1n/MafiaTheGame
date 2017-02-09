@@ -11,7 +11,7 @@ import com.mafia.the.game.player.Civilian;
 
 public class NightState extends State {
 
-    private Civilian deadCivilian;
+
     protected NightState(com.mafia.the.game.gamestates.GameStateManager gsm) {
         super(gsm);
     }
@@ -48,5 +48,13 @@ public class NightState extends State {
      */
     public void displayWhoWasKilled(){
 
+    }
+    /**
+     * at night, killCivilian will be called at least once, and per method call,
+     * one civilian of choosing will die.
+     * @param victim a civilian object, which mafia is going to kill
+     */
+    public void killCivilian(Civilian victim){
+        victim.setDead();
     }
 }

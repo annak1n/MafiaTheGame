@@ -34,7 +34,7 @@ public abstract class Player {
     public void setName(String name){
         this._name= name;
     }
-    public void setAlive(Boolean alive){
+    public void setAliveOrDead(Boolean alive){
         this._alive = alive;
     }
     public void setMafia(Boolean mafia){
@@ -59,7 +59,8 @@ public abstract class Player {
         return this._isMafia;
     }
 
-    public abstract Boolean isAlive();
-    public abstract Boolean mafiaFlag();
+    public Boolean isAlive(){
+        return this.getAlive();
+    }
     public abstract <T> int howManyAlive(ArrayList<T> list); //list of mafia or civilian should be the input.
 }

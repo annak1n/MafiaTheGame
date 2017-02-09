@@ -3,6 +3,8 @@ package com.mafia.the.game.player;
 
 import java.util.ArrayList;
 
+import static com.badlogic.gdx.Input.Keys.T;
+
 /**
  * Created by tb on 2/6/17.
  * Civilian class defines civilians(innocents).
@@ -11,7 +13,6 @@ import java.util.ArrayList;
  */
 
 public class Civilian extends Player {
-    private String _name;
     private Boolean _alive;
     private Boolean _isMafia = false;
 
@@ -21,25 +22,19 @@ public class Civilian extends Player {
     public Civilian(String name, Boolean alive, Boolean mafia){
         super(name,alive,mafia);
     }
-    public void setAlive(){
-        this._alive = true;
-    }
-    public void setDead(){
-        this._alive = false;
-    }
-
-    @Override
-    public Boolean isAlive() {
-        return _alive;
-    }
-
-    @Override
-    public Boolean mafiaFlag() {
-        return _isMafia;
-    }
 
     @Override
     public <T> int howManyAlive(ArrayList<T> list) {
         return list.size();
+    }
+
+    /**
+     * During the "Day" phase, civilians are allowed to pick a person who they believe is a mafia.
+     * killMafia is only called when the person chosen by civilians is indeed a mafia.
+     * @param criminal mafia character picked by civilians.
+     */
+    public void killMafia(Mafia mafia){
+        mafia.setAliveOrDead(false);
+        String killedMafia = mafia.getName(); //display to everyone who was killed.
     }
 }
