@@ -8,10 +8,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
-import com.mafia.the.game.player.Civilian;
-import com.mafia.the.game.player.Mafia;
-
-import java.util.ArrayList;
 
 import static com.badlogic.gdx.Gdx.input;
 
@@ -28,8 +24,6 @@ public class PlayState extends State {
     private BitmapFont text;
     private Rectangle mafia;
     private Music gameMusic;
-    private ArrayList<Mafia> mafiaArray = new ArrayList<Mafia>();
-    private ArrayList<Civilian> civilians = new ArrayList<Civilian>();
 
     protected PlayState(com.mafia.the.game.gamestates.GameStateManager gsm) {
         super(gsm);
@@ -38,10 +32,6 @@ public class PlayState extends State {
         testImage = new Texture(Gdx.files.internal("sprites/smurf.png"));
         mafia = new Rectangle();
         mafia.set(0, 0, testImage.getWidth() / 4, testImage.getHeight() / 4); //divide by 4 because the sprite sheet is 4 x 4.
-
-        //copy the list.
-        mafiaArray = MenuState.getMafia();
-        civilians = MenuState.getCivilians();
     }
 
     @Override

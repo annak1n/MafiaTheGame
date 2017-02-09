@@ -14,6 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by tb on 2/3/17.
  * On the menu screen, display characters to user and allow them to pick a character.
+ * Arraylists of characters should be initialized here then pass it on to PlayState.
  */
 
 public class MenuState extends State {
@@ -58,7 +59,7 @@ public class MenuState extends State {
             introMusic.stop();
             //NO DISPOSING HERE BECAUSE WE WILL MOST LIKELY BE REUSING THIS STATE.
         }
-        //if texture for specific character was pressed, then set the user's character as that character here.
+        //if texture for specific character was pressed, then set the user's character as that character here. Initialize the array accordingly.
         //and create other characters here.
     }
 

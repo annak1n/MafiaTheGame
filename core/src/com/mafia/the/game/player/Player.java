@@ -1,5 +1,7 @@
 package com.mafia.the.game.player;
 
+import com.badlogic.gdx.math.Vector3;
+
 import java.util.ArrayList;
 
 /**
@@ -13,15 +15,21 @@ public abstract class Player {
     private Boolean _alive;
     private Boolean _isMafia;
 
+    private Vector3 _position; //each character's position on screen.
+
+//    private Animation characterAnimation; //character animation if applicable.
+
     public Player(){
         _name = "Bob";
         _alive = true;
         _isMafia = false;
+        _position = new Vector3();
     }
     public Player(String name, Boolean isAlive, Boolean isMafia){
         this._name = name;
         this._alive = isAlive;
         this._isMafia = isMafia;
+        this._position = new Vector3();
     }
     public void setName(String name){
         this._name= name;
@@ -32,7 +40,16 @@ public abstract class Player {
     public void setMafia(Boolean mafia){
         this._isMafia = mafia;
     }
-    public String getName(){
+    public void setPosition(Vector3 pos){
+        this._position = pos;
+    }
+    public void setPosition(float x, float y, float z){
+        this._position.add(x,y,z);
+    }
+    public Vector3 getPosition(){
+        return this._position;
+    }
+    public String getName() {
         return this._name;
     }
     public Boolean getAlive(){
