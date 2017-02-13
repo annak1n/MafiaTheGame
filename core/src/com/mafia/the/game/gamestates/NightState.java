@@ -1,7 +1,11 @@
 package com.mafia.the.game.gamestates;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mafia.the.game.player.Civilian;
+
+import static com.badlogic.gdx.Gdx.input;
 
 /**
  * Created by tb on 2/8/17.
@@ -17,8 +21,19 @@ public class NightState extends State {
     }
 
     @Override
+    /**
+     * FROM NIGHTSTATE, YOU CAN ONLY TRANSITION INTO EITHER DAYSTATE OR MENUSTATE(GAMESTATE).
+     *
+     *
+     * YOU NEED TO DETERMINE THE MEMORY/TIME -EFFICIENT WAY TO HANDLE NIGHT/DAY STATE SWITCHING.
+     */
     protected void handleInput() {
-
+        if(Gdx.input.isKeyPressed(Input.Keys.ENTER)){
+            gsm.set(new MenuState(gsm));
+        }
+        else if(input.isKeyPressed(Input.Keys.D)){ //TRANSITION CONDITION LATER TO BE DETERMINED. PRESSING D WILL HANDLE THIS FOR NOW FOR TESTING PURPOSES.
+            gsm.push(new DayState(gsm));
+        }
     }
 
     @Override
@@ -41,7 +56,7 @@ public class NightState extends State {
 
     @Override
     public void render(SpriteBatch spriteBatch) {
-
+        Gdx.gl.glClearColor(1, 0, 1, 1); //clear screen
     }
 
     @Override

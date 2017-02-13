@@ -52,7 +52,7 @@ public class MenuState extends State {
     public void handleInput () {
         //For now, enter key will cause transition into playstate.
         if (Gdx.input.justTouched()) {
-            gsm.set(new PlayState(gsm)); //transition into Playstate.
+            gsm.push(new PlayState(gsm)); //transition into Playstate.
             playingState = true;
             introMusic.stop();
             //NO DISPOSING HERE BECAUSE WE WILL MOST LIKELY BE REUSING THIS STATE.

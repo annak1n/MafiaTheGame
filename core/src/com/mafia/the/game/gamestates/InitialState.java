@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
  * Created by tb on 2/9/17.
- * Initial State displays the initial game logo and instructions, and allow play button.
+ * Initial State displays the initial game logo, title, quit button, next button.
  */
 
 public class InitialState extends State {

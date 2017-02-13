@@ -41,6 +41,11 @@ public class PlayState extends State {
             gsm.set(new MenuState(gsm));
         }
 
+        //**DETERMINE IF NIGHT/DAY STATE NEED TO BE ON TOP OF PLAYSTATE OR NOT**
+
+        else if(input.isKeyPressed(Input.Keys.N)){ //entering the day/night state is to be decided by a button or the game itself. Press N for now for testing purposes.
+            gsm.set(new NightState(gsm));
+        }
     }
     @Override
     public void update(float dt) {
@@ -48,6 +53,11 @@ public class PlayState extends State {
         handleInput();
 
         //each character should introduce themselves. When the introduction of each character is finished, enter Night first.
+
+        //DAY AND NIGHT MAY BE DEALT WITH INSIDE PLAYSTATE CLASS INSTEAD OF THEIR OWN CLASS BECAUSE OF MEMORY EFFICIENCY AND THE GAME STATES STRUCTURE.
+        //USING A STACK IS GOOD WITH STATE CHANGES BUT FOR THE NIGHT AND DAY STATES, YOU NEED TO KEEP SWITCHING BACK AND FORTH AND POPPING AND PUSHING OF TWO STATES
+        //SEEMS INEFFICIENT BECAUSE IT WILL HAPPEN A LOT. ADDITIONALLY, YOU NEED TO KEEP TRACK OF THE CURRENT GAME, AND IF YOU KEEP POPPING AND PUSHING ON TO GAME STATE STACK,
+        //YOU MAY LOSE SOME INFO ABOUT THE GAME.
 
         /*
         NIGHT STATE ... gsm.push(new NightState());  //push because we want day and night states on top of playstate.
@@ -70,7 +80,7 @@ public class PlayState extends State {
         Gdx.gl.glClearColor(0, 0, 1, 1); //clear screen
         sb.setProjectionMatrix(cam.combined); //spritebatch should use coordinate system specified by the cam.
         sb.begin();
-        sb.draw(testImage, mafia.x, mafia.y);
+        sb.draw(testImage,0,0, MafiaGame.WIDTH, MafiaGame.HEIGHT);
         sb.end();
     }
 

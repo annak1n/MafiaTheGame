@@ -1,5 +1,7 @@
 package com.mafia.the.game.gamestates;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mafia.the.game.player.Mafia;
 
@@ -15,8 +17,13 @@ public class DayState extends State {
     }
 
     @Override
+    /**
+     * FROM DAYSTATE, YOU CAN ONLY TRANSITION INTO NIGHTSTATE.
+     */
     protected void handleInput() {
-
+        if(Gdx.input.isKeyPressed(Input.Keys.N)){
+            gsm.set(new NightState(gsm));
+        }
     }
 
     @Override
@@ -36,7 +43,7 @@ public class DayState extends State {
 
     @Override
     public void render(SpriteBatch sb) {
-
+        Gdx.gl.glClearColor(0, 1, 1, 1); //clear screen
     }
 
     @Override
