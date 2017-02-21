@@ -33,8 +33,9 @@ public class Civilian extends Player {
      * killMafia is only called when the person chosen by civilians is indeed a mafia.
      * @param criminal mafia character picked by civilians.
      */
-    public void killMafia(Mafia mafia){
+    public String killMafia(Mafia mafia) {
+        String killedMafia = mafia.getName();
         mafia.setAliveOrDead(false);
-        String killedMafia = mafia.getName(); //display to everyone who was killed.
+        return killedMafia;
     }
 }

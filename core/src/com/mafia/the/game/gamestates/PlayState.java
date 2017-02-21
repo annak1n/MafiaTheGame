@@ -19,16 +19,20 @@ import static com.badlogic.gdx.Gdx.input;
 public class PlayState extends State {
 
     private Boolean isDay; //set game as day or night.
+//    private Boolean isFirstGame;
     private OrthographicCamera textCam;
     private Texture testImage;
     private BitmapFont text;
     private Rectangle mafia;
     private Music gameMusic;
+    private Texture dayBgImage; //day state background image.
+    private Texture nightBgImage; //night state background image.
 
     protected PlayState(com.mafia.the.game.gamestates.GameStateManager gsm) {
         super(gsm);
         textCam = new OrthographicCamera(); //cam for text
         isDay = true;
+//        isFirstGame = true;
         testImage = new Texture(Gdx.files.internal("sprites/smurf.png"));
         mafia = new Rectangle();
         mafia.set(0, 0, testImage.getWidth() / 4, testImage.getHeight() / 4); //divide by 4 because the sprite sheet is 4 x 4.
@@ -58,20 +62,17 @@ public class PlayState extends State {
         //USING A STACK IS GOOD WITH STATE CHANGES BUT FOR THE NIGHT AND DAY STATES, YOU NEED TO KEEP SWITCHING BACK AND FORTH AND POPPING AND PUSHING OF TWO STATES
         //SEEMS INEFFICIENT BECAUSE IT WILL HAPPEN A LOT. ADDITIONALLY, YOU NEED TO KEEP TRACK OF THE CURRENT GAME, AND IF YOU KEEP POPPING AND PUSHING ON TO GAME STATE STACK,
         //YOU MAY LOSE SOME INFO ABOUT THE GAME.
+        if(isDay){ //DAY STATE
 
-        /*
-        NIGHT STATE ... gsm.push(new NightState());  //push because we want day and night states on top of playstate.
-         */
+            isDay = false;
+        }
 
-        //change day and night based on the time collapsed.. say 2-5 mins.
+        else{ //NIGHT STATE
 
-        //during the day, Mafia can't be active.
-        /*
-        DAY STATE //Day state should be set from night state.
-         */
 
-        //at night, Mafia is active and allow them to attack civilians.
-
+            //AT SOME POINT, SWITCH STATE.
+            isDay = true;
+        }
     }
 
     @Override

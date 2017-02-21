@@ -26,4 +26,10 @@ public class Mafia extends Player {
     public <T> int howManyAlive(ArrayList<T> list) {
         return list.size();
     }
+
+    public String killCivilian(Civilian victim){
+        String killedCivilian = victim.getName();
+        victim.setAliveOrDead(false);
+        return killedCivilian;
+    }
 }
