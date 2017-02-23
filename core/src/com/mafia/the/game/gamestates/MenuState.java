@@ -9,6 +9,7 @@ import com.mafia.the.game.player.Civilian;
 import com.mafia.the.game.player.Mafia;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by tb on 2/3/17.
@@ -22,9 +23,35 @@ public class MenuState extends State {
     private Texture playButton;
     private Texture title;
     private Music introMusic;
-    private static ArrayList<Civilian> civilians; //should be a dynamically sized array because the number of players will vary.
-    private static ArrayList<Mafia> mafiaArray;
+    public static ArrayList<Civilian> civilians; //should be a dynamically sized array because the number of players will vary.
+    public static ArrayList<Mafia> mafias;
+    private static final int NUM_OF_MAFIA = 3;
+    private static final int NUM_OF_CIVIL = 10;
 
+    /**
+     * random name generator
+     */
+    private enum randomName {
+        Bob,
+        Justin,
+        Thomas,
+        Julie,
+        Christina,
+        Steve,
+        Josh,
+        John,
+        Emily,
+        Emma;
+
+        /**
+         *random name picker
+         * @return random name
+         */
+        private static randomName getRandomName(){
+            Random random = new Random();
+            return values()[random.nextInt(values().length)];
+        }
+    }
 
     public MenuState(GameStateManager gsm) {
         super(gsm);
@@ -42,11 +69,21 @@ public class MenuState extends State {
 
         //Initialize civilians and mafia array. Initialization for each element is done in handleInput, after the user chooses a character.
         civilians = new ArrayList<Civilian>();
-        mafiaArray = new ArrayList<Mafia>();
+        mafias = new ArrayList<Mafia>();
 
         //draw sprite at (0,0)
         cam = new OrthographicCamera();
         cam.setToOrtho(false, MafiaGame.WIDTH, MafiaGame.HEIGHT); //cam size same as game world defined in desktoplauncher.
+
+        //INITIALIZE CIVILIANS
+        for(int i = 0; i<NUM_OF_CIVIL;i++){
+            civilians.add(new Civilian(randomName.getRandomName().toString(),true,false)); //@param(name,alive,mafia)
+        }
+
+        //INITIALIZE MAFIA
+        for(int i = 0; i<NUM_OF_MAFIA;i++){
+            mafias.add(new Mafia(randomName.getRandomName().toString(),true,true)); //@param(name,alive,mafia)
+        }
     }
     @Override
     public void handleInput () {
@@ -57,6 +94,9 @@ public class MenuState extends State {
             introMusic.stop();
             //NO DISPOSING HERE BECAUSE WE WILL MOST LIKELY BE REUSING THIS STATE.
         }
+
+        //If this game supports multiplayer mode, number of players will be set here, but for now, only single player mode allowed.
+
         //if texture for specific character was pressed, then set the user's character as that character here. Initialize the array accordingly.
         //and create other characters here.
 

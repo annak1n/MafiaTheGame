@@ -20,7 +20,7 @@ public class PlayState extends State {
 
     private Boolean isDay; //set game as day or night.
 //    private Boolean isFirstGame;
-    private OrthographicCamera textCam;
+    private OrthographicCamera textCam; //cam for text display
     private Texture testImage;
     private BitmapFont text;
     private Rectangle mafia;
@@ -64,14 +64,15 @@ public class PlayState extends State {
         //YOU MAY LOSE SOME INFO ABOUT THE GAME.
         if(isDay){ //DAY STATE
 
-            isDay = false;
+            //AFTER CIVILIANS GUESS WHO MAFIA IS, GO BACK TO NIGHT STATE.
+            //isDay = false;
         }
 
         else{ //NIGHT STATE
 
 
             //AT SOME POINT, SWITCH STATE.
-            isDay = true;
+            //isDay = true;
         }
     }
 
@@ -83,6 +84,12 @@ public class PlayState extends State {
         sb.begin();
         sb.draw(testImage,0,0, MafiaGame.WIDTH, MafiaGame.HEIGHT);
         sb.end();
+        if(isDay){
+            //render day background
+        }
+        else{
+            //render night background
+        }
     }
 
     @Override
